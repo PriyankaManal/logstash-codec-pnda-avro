@@ -32,7 +32,7 @@ require "logstash/util"
 # ----------------------------------
 # input {
 #   kafka {
-#     codec => avro {
+#     codec => pnda-avro {
 #         schema_uri => "/tmp/schema.avsc"
 #     }
 #   }
@@ -44,8 +44,8 @@ require "logstash/util"
 #   ...
 # }
 # ----------------------------------
-class LogStash::Codecs::Avro < LogStash::Codecs::Base
-  config_name "avro"
+class LogStash::Codecs::PNDAAvro < LogStash::Codecs::Base
+  config_name "pnda-avro"
 
 
   # schema path to fetch the schema from.
@@ -76,7 +76,7 @@ class LogStash::Codecs::Avro < LogStash::Codecs::Base
     yield LogStash::Event.new(datum_reader.read(decoder))
   rescue => e
     if tag_on_failure
-      @logger.error("Avro parse error, original data now in message field", :error => e)
+      @logger.error("PNDAAvro parse error, original data now in message field", :error => e)
       yield LogStash::Event.new("message" => data, "tags" => ["_avroparsefailure"])
     else
       raise e

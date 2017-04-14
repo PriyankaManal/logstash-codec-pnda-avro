@@ -1,10 +1,10 @@
 Gem::Specification.new do |s|
 
-  s.name            = 'logstash-codec-avro'
+  s.name            = 'logstash-codec-pnda-avro'
   s.version         = '3.1.0'
   s.platform        = 'java'
   s.licenses        = ['Apache-2.0']
-  s.summary         = "Encode and decode avro formatted data"
+  s.summary         = "Encode and decode PNDA avro formatted data with https://github.com/logstash-plugins/logstash-codec-avro/pull/6 applied"
   s.description     = "This gem is a Logstash plugin required to be installed on top of the Logstash core pipeline using $LS_HOME/bin/logstash-plugin install gemname. This gem is not a stand-alone program"
   s.authors         = ["Elastic"]
   s.email           = 'info@elastic.co'

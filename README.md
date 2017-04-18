@@ -1,3 +1,34 @@
+# PNDA Avro Logstash Plugin
+
+The current Avro and Kafka output plugins are not compatible when transporting bytes.
+This, hopefully, temporary, plugin patches the Avro Codec in order to make it compatible with the kafka output plugin
+
+## Installation
+
+* Download a Github release
+* Install it with `bin/logstash-plugin install logstash-codec-pnda-avro-3.1.0-java.gem`
+
+## Configuration
+
+Here is an example configuration. Please note that we use the Kafka `ByteArraySerializer`.
+
+    input { stdin { codec => "json" } }
+    
+    output {
+            kafka {
+                    codec => pnda-avro { schema_uri => "/home/cloud-user/pnda.avsc" }
+    
+                    bootstrap_servers => "localhost:9092"
+                    topic_id => "valid.messages"
+                    compression_type => "none" # "none", "gzip", "snappy", "lz4"
+                    value_serializer => 'org.apache.kafka.common.serialization.ByteArraySerializer'
+            }
+    }
+
+You can then inject the following example input on the standard input (one line per event):
+
+    { "timestamp": 1492173538000, "src": "netflow", "host_ip": "test_host", "rawdata": "this is raw data" }
+
 # Logstash Plugin
 
 [![Travis Build Status](https://travis-ci.org/logstash-plugins/logstash-codec-avro.svg)](https://travis-ci.org/logstash-plugins/logstash-codec-avro)

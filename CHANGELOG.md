@@ -1,3 +1,6 @@
+## 3.1.1
+ - PNDA specific fix in order to make it compatible with the kafka output plugin
+
 ## 3.1.0
  - Introduce `tag_on_failure` option to tag events with `_avroparsefailure` instead of throwing an exception when decoding
 

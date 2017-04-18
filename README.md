@@ -6,7 +6,7 @@ This, hopefully, temporary, plugin patches the Avro Codec in order to make it co
 ## Installation
 
 * Download a Github release
-* Install it with `bin/logstash-plugin install logstash-codec-pnda-avro-3.1.0-java.gem`
+* Install it with `bin/logstash-plugin install logstash-codec-pnda-avro-3.1.1-java.gem`
 
 ## Configuration
 

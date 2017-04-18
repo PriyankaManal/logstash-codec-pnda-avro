@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
 
   s.name            = 'logstash-codec-pnda-avro'
-  s.version         = '3.1.0'
+  s.version         = '3.1.1'
   s.platform        = 'java'
   s.licenses        = ['Apache-2.0']
   s.summary         = "Encode and decode PNDA avro formatted data with https://github.com/logstash-plugins/logstash-codec-avro/pull/6 applied"

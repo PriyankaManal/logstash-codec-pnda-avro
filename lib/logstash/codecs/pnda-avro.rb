@@ -70,7 +70,7 @@ class LogStash::Codecs::PNDAAvro < LogStash::Codecs::Base
 
   public
   def decode(data)
-    datum = StringIO.new(String.from_java_bytes(data))
+    datum = StringIO.new(data)
     decoder = Avro::IO::BinaryDecoder.new(datum)
     datum_reader = Avro::IO::DatumReader.new(@schema)
     yield LogStash::Event.new(datum_reader.read(decoder))

@@ -24,9 +24,8 @@ describe LogStash::Codecs::PNDAAvro do
       buffer = StringIO.new
       encoder = Avro::IO::BinaryEncoder.new(buffer)
       dw.write(test_event.to_hash, encoder)
-      payload = buffer.string.to_java_bytes
 
-      subject.decode(payload) do |event|
+      subject.decode(buffer.string) do |event|
         insist { event.is_a? LogStash::Event }
         insist { event.get("foo") } == test_event.get("foo")
         insist { event.get("bar") } == test_event.get("bar")
